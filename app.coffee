@@ -2,12 +2,16 @@ require("coffee-script")
 http = require("http")
 url  = require("url")
 
-badRequest = (url) ->
-  false
+badRequest = (request) ->
+  params = url.parse(request.url, true).query
+
+  return true if parseInt(params["rows"]) > 20
+
 
 server = http.createServer (request, response) ->
-  if badRequest(request.url)
-    response.end()
+  if badRequest(request)
+    response.writeHead(413, { 'Content-Type': 'text/plain' })
+    response.end("Not supported. Try a smaller request.")
     return
 
   proxyOptions = {
