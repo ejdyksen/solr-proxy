@@ -1,0 +1,12 @@
+{
+  "name": "websolr-proxy",
+  "version": "0.1.0",
+  "author": "E.J. Dyksen <ej@dyksen.net>",
+  "dependencies": {
+    "coffee-script": "1.4.x"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm":  "1.1.x"
+  }
+}
